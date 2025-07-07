@@ -1,0 +1,10 @@
+llama-cpp-python
+yfinance
+python-dotenv
+streamlit
+textblob
+pandas
+google-generativeai
+plotly
+requests
+
