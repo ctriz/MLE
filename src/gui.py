@@ -159,6 +159,23 @@ def main():
         initial_sidebar_state="expanded"
     )
     
+    # Company name to ticker mapping
+    company_to_ticker = {
+        "apple": "AAPL",
+        "tesla": "TSLA",
+        "google": "GOOGL",
+        "alphabet": "GOOGL",
+        "microsoft": "MSFT",
+        "amazon": "AMZN",
+        "nvidia": "NVDA",
+        "meta": "META",
+        "facebook": "META",
+        "netflix": "NFLX",
+    }
+    
+    # Allowed tickers list
+    allowed_tickers = list(company_to_ticker.values())
+    
     # Header
     st.title("🤖 Multi-Agent Stock Analyzer")
     st.markdown("Powered by Gemini LLM - Technical Analysis, Research, Social Sentiment & Investment Advice")
@@ -171,12 +188,20 @@ def main():
     st.sidebar.header("⚙️ Analysis Options")
     
     # Ticker input
-    ticker = st.sidebar.text_input(
-        "Enter Stock Ticker",
+    user_input = st.sidebar.text_input(
+        "Enter Stock Ticker or Company Name",
         value=st.session_state.ticker,
-        placeholder="e.g., AAPL, TSLA, GOOGL",
-        help="Enter a valid stock ticker symbol"
-    ).upper().strip()
+        placeholder="e.g., AAPL, Apple, TSLA, Tesla, GOOGL, Google",
+        help="Enter a valid stock ticker symbol or company name"
+    ).strip()
+    
+    # Map company name to ticker if needed
+    ticker = company_to_ticker.get(user_input.lower(), user_input.upper())
+    
+    # Validate ticker
+    if user_input and ticker not in allowed_tickers:
+        st.sidebar.error(f"❌ '{user_input}' is not supported. Only the following stocks are accepted: {', '.join(allowed_tickers)}")
+        ticker = ""
     
     # Update session state when ticker changes
     if ticker != st.session_state.ticker:

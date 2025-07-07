@@ -9,7 +9,14 @@ def get_news_data(ticker):
     Returns:
         dict: News data with headlines and semantic search results.
     """
+    # Initialize embedding manager to get company relationships
+    embedding_manager = EmbeddingManager()
+    
+    # Get related terms using vector similarity
+    related_terms = embedding_manager.get_company_relationships(ticker)
+    
     # Placeholder for real news/research data fetching logic
+    # In a real implementation, you would search news APIs for these terms
     headlines = [
         f"{ticker} reports record quarterly earnings.",
         f"Analysts upgrade {ticker} stock outlook.",
@@ -18,13 +25,19 @@ def get_news_data(ticker):
         f"Market reacts positively to {ticker} earnings call."
     ]
     
-    # Initialize embedding manager
-    embedding_manager = EmbeddingManager()
+    # Add headlines mentioning related brands/companies based on vector relationships
+    if len(related_terms) > 1:
+        # Generate headlines mentioning related terms
+        for term in related_terms[:3]:  # Use top 3 related terms
+            if term.lower() != ticker.lower():
+                headlines.append(f"{term} contributes to {ticker}'s strong performance.")
+                headlines.append(f"Analysts focus on {term}'s role in {ticker} growth strategy.")
     
     # Add news to vector database with metadata
     metadata = {
         "timestamp": datetime.datetime.now().isoformat(),
-        "source": "news_api"
+        "source": "news_api",
+        "related_terms": related_terms
     }
     embedding_manager.add_news(ticker, headlines, metadata)
     
@@ -39,5 +52,6 @@ def get_news_data(ticker):
         "ticker": ticker,
         "headlines": headlines,
         "similar_news": similar_news,
+        "related_terms": related_terms,
         "embedding_manager": embedding_manager  # Pass for further use
     } 
