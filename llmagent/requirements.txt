@@ -1,10 +1,32 @@
-llama-cpp-python
-yfinance
-python-dotenv
-streamlit
-textblob
-pandas
-google-generativeai
-plotly
-requests
+# Core LLM and AI packages
+google-generativeai>=0.3.0
+sentence-transformers>=2.2.0
+chromadb>=0.4.0
+hf_xet>=0.0.1
+
+# Data analysis and visualization
+pandas>=2.0.0
+numpy>=1.24.0
+yfinance>=0.2.0
+pandas-ta>=0.3.0
+plotly>=5.15.0
+
+# Web framework and GUI
+streamlit>=1.28.0
+requests>=2.31.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+
+# Text processing and sentiment analysis
+textblob>=0.17.0
+nltk>=3.8.0
+
+# Vector database and embeddings
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# Additional utilities
+tqdm>=4.65.0
+scikit-learn>=1.3.0
 
