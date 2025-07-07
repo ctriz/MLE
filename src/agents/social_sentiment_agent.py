@@ -1,6 +1,9 @@
 import os
 import google.generativeai as genai
 from .base_agent import BaseAgent
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class SocialSentimentAgent(BaseAgent):
     def __init__(self):

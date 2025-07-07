@@ -14,7 +14,7 @@ def run_investment_workflow(ticker):
 
     market_data = get_market_data(ticker)
     news_data = get_news_data(ticker)
-    sentiment_data = get_social_sentiment_data(ticker)
+    sentiment_data = get_social_sentiment_data(ticker) 
 
     technical_result = technical_agent.analyze(market_data)
     print("Technical Analysis Result:", technical_result)

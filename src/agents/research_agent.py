@@ -2,6 +2,9 @@ import os
 import google.generativeai as genai
 from .base_agent import BaseAgent
 from src.data.news_data import get_news_data
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ResearchAnalysisAgent(BaseAgent):
     def __init__(self):

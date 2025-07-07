@@ -24,21 +24,45 @@ def get_market_data(ticker="AAPL"):
         
         # Compute technical indicators
         # RSI
-        rsi = ta.rsi(hist['Close'], length=14).iloc[-1]
+        rsi = None
+        try:
+            rsi = ta.rsi(hist['Close'], length=14).iloc[-1]
+        except:
+            pass
         
         # MACD
-        macd = ta.macd(hist['Close'])
-        macd_line = macd['MACD_12_26_9'].iloc[-1]
-        signal_line = macd['MACDs_12_26_9'].iloc[-1]
+        macd_line = None
+        signal_line = None
+        try:
+            macd = ta.macd(hist['Close'])
+            if macd is not None and not macd.empty:
+                macd_line = macd['MACD_12_26_9'].iloc[-1]
+                signal_line = macd['MACDs_12_26_9'].iloc[-1]
+        except:
+            pass
         
         # Bollinger Bands
-        bb = ta.bbands(hist['Close'], length=20)
-        bb_upper = bb['BBU_20_2.0'].iloc[-1]
-        bb_lower = bb['BBL_20_2.0'].iloc[-1]
+        bb_upper = None
+        bb_lower = None
+        try:
+            bb = ta.bbands(hist['Close'], length=20)
+            if bb is not None and not bb.empty:
+                bb_upper = bb['BBU_20_2.0'].iloc[-1]
+                bb_lower = bb['BBL_20_2.0'].iloc[-1]
+        except:
+            pass
         
         # Simple Moving Averages
-        sma_20 = ta.sma(hist['Close'], length=20).iloc[-1]
-        sma_50 = ta.sma(hist['Close'], length=50).iloc[-1]
+        sma_20 = None
+        sma_50 = None
+        try:
+            sma_20 = ta.sma(hist['Close'], length=20).iloc[-1]
+        except:
+            pass
+        try:
+            sma_50 = ta.sma(hist['Close'], length=50).iloc[-1]
+        except:
+            pass
         
         return {
             "ticker": ticker,

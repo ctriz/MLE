@@ -3,6 +3,9 @@ import google.generativeai as genai
 from .base_agent import BaseAgent
 from src.data.market_data import get_market_data
 from src.data.news_data import get_news_data
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class TechnicalAnalysisAgent(BaseAgent):
     def __init__(self):
@@ -20,6 +23,10 @@ class TechnicalAnalysisAgent(BaseAgent):
         Returns:
             dict: Analysis result with technical signal and rationale.
         """
+        # Check if market_data has an error
+        if market_data.get("error"):
+            return {"error": f"Market data error: {market_data['error']}"}
+        
         ticker = market_data.get("ticker")
         if not ticker:
             return {"error": "Ticker symbol is required in market_data."}
@@ -50,11 +57,8 @@ class TechnicalAnalysisAgent(BaseAgent):
 
         # Use the latest Gemini LLM API pattern
         try:
-            if hasattr(genai, "GenerativeModel"):
-                model = genai.GenerativeModel(self.gemini_model)
-                response = model.generate_content(prompt)
-                return {"gemini_analysis": response.text, "prompt": prompt}
-            else:
-                return {"error": "No compatible GenerativeModel class found in google-generativeai SDK."}
+            model = genai.GenerativeModel(self.gemini_model)
+            response = model.generate_content(prompt)
+            return {"gemini_analysis": response.text, "prompt": prompt}
         except Exception as e:
             return {"error": str(e), "prompt": prompt} 
