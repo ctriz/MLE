@@ -1,8 +1,8 @@
 import os
 import google.generativeai as genai
 from .base_agent import BaseAgent
-from data.market_data import get_market_data
-from data.news_data import get_news_data
+from src.data.market_data import get_market_data
+from src.data.news_data import get_news_data
 
 class TechnicalAnalysisAgent(BaseAgent):
     def __init__(self):

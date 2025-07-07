@@ -1,4 +1,4 @@
-from utils.embedding import EmbeddingManager
+from src.utils.embedding import EmbeddingManager
 import datetime
 
 def get_news_data(ticker):

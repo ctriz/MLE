@@ -1,7 +1,7 @@
 import os
 import google.generativeai as genai
 from .base_agent import BaseAgent
-from data.news_data import get_news_data
+from src.data.news_data import get_news_data
 
 class ResearchAnalysisAgent(BaseAgent):
     def __init__(self):
