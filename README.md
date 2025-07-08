@@ -1,38 +1,21 @@
 # 🤖 Multi-Agent Stock Analyzer
 
-A comprehensive stock analysis application powered by Google Gemini LLM that provides technical analysis, sentiment analysis, news insights, and investment advice for any stock ticker.
+🚀 A weekend experiment using CrewAI, Gemini LLM, and vector embeddings to orchestrate agent-based analysis of a stock ticker — combining technical indicators, news sentiment, and social media signals. The pipeline is modular and can be adapted to other research and monitoring use cases across industries.
 
-## ✨ Features
 
-### 📈 **Real-time Stock Data**
-- Current price, change, and percentage change
-- Historical price data visualization
-- Market information and statistics
+## What It Does
 
-### 📊 **Technical Analysis**
-- **MACD**: Trend-following momentum indicator
-- **RSI**: Momentum oscillator (0-100 scale)
-- **Bollinger Bands**: Volatility indicator
-- **SMA**: 20-day moving average
-- **Interactive Charts**: Plotly-powered technical analysis charts
+- Retrieves and processes stock-related data
+- Analyzes technical indicators
+- Fetches news and social media content
+- Applies sentiment analysis using LLM
+- Summarizes insights via agent-based orchestration
 
-### 🧠 **AI-Powered Analysis**
-- **Multi-Agent System**: Technical, Research, Social Sentiment, and Investment Advisor agents
-- **Gemini LLM Integration**: Advanced stock analysis using Google Gemini models
-- **Sentiment Analysis**: AI analysis of news and social media sentiment
-- **Investment Insights**: AI-generated investment recommendations
+## Tools Used
 
-### 🔍 **Vectorization & Semantic Search**
-- **Text Embeddings**: Vector embeddings using sentence-transformers
-- **Semantic Search**: Context-aware news search using vector similarity
-- **ChromaDB Integration**: Vector database for news embeddings
-- **Enhanced Context**: Provide AI agents with relevant historical context
-
-### 📰 **News & Sentiment Analysis**
-- **Recent News Headlines**: Latest news related to the stock
-- **News Sentiment**: AI analysis of news impact on stock sentiment
-- **Social Media Sentiment**: Analysis of X (Twitter) posts
-- **Semantic News Search**: Find similar historical news using embeddings
+- CrewAI for multi-agent task orchestration
+- Gemini (LLM) for summarization and sentiment classification
+- Vector embeddings for semantic search and clustering
 
 ## 🖥️ Usage
 
